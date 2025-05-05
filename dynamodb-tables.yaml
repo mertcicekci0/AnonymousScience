@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'DynamoDB tables for Anonymous Science project'
+
+Resources:
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: anonymous-science-users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: email
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: EmailIndex
+          KeySchema:
+            - AttributeName: email
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  ProjectsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: anonymous-science-projects
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: authorId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: AuthorIndex
+          KeySchema:
+            - AttributeName: authorId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+
+  SubmissionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: anonymous-science-submissions
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+        - AttributeName: projectId
+          AttributeType: S
+        - AttributeName: userId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: ProjectIndex
+          KeySchema:
+            - AttributeName: projectId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+        - IndexName: UserIndex
+          KeySchema:
+            - AttributeName: userId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL 
