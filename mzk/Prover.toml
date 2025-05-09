@@ -1,0 +1,8 @@
+sender = ""
+recipient = ""
+message = ""
+timestamp = "1746831731483"
+expected_sender_hash = ""
+expected_recipient_hash = ""
+expected_message_hash = ""
+expected_timestamp = "1746831731483"

@@ -1,5 +1,10 @@
+"use client";
+
 import { MainLayout } from '@/components/layout/MainLayout';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const NoirVerification = dynamic(() => import('@/components/NoirVerification'));
 
 const logos = [
   // Logo2: Sol üst, büyük, dikkat çekici
@@ -84,6 +89,13 @@ export default function Home() {
                 Submit Paper
               </Link>
             </div>
+          </div>
+
+          {/* Noir Verification Section */}
+          <div className="mt-16 max-w-2xl mx-auto px-4">
+            <NoirVerification onVerificationComplete={(success) => {
+              console.log('Verification complete:', success);
+            }} />
           </div>
 
           {/* Features Section */}

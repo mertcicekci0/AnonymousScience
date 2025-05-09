@@ -1,113 +1,322 @@
-# AnonymousScience
+# AnonymousScience 🔬
 
-AnonymousScience revolutionizes the scientific peer review process by providing cryptographic guarantees of double-blind anonymity while simultaneously verifying academic credentials and expertise.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Noir](https://img.shields.io/badge/Noir-000000?style=flat&logo=noir&logoColor=white)](https://noir-lang.org/)
 
-## Features
+> Revolutionizing scientific peer review with zero-knowledge proofs and blockchain technology
 
-- Cryptographic proof of academic credentials without identity disclosure
-- Verification of domain expertise through publication history proofs
-- Anonymous yet consistent identity for review continuity
-- Transparent yet private review metrics
-- Modern and intuitive user interface
+## 🌟 Overview
 
-## Tech Stack
+AnonymousScience is a groundbreaking platform that transforms the scientific peer review process through cryptographic guarantees of double-blind anonymity while maintaining academic credibility. Our platform leverages cutting-edge zero-knowledge proofs to ensure complete privacy and security in the review process.
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
-- **Blockchain**: Noir, zkEmail, zkJWT
-- **Authentication**: RainbowKit, wagmi
-- **State Management**: React Query
+### 🎯 Key Features
 
-## Getting Started
+- **Zero-Knowledge Identity Verification**
+  - Cryptographic proof of academic credentials
+  - Anonymous yet verifiable expertise
+  - Secure institutional email verification
+
+- **Advanced Review System**
+  - Double-blind review process
+  - Anonymous reviewer matching
+  - Quality metrics and feedback
+
+- **Privacy-First Architecture**
+  - End-to-end encryption
+  - Zero-knowledge proofs
+  - Secure data storage
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    A[Client Layer] --> B[API Gateway]
+    B --> C[Authentication Service]
+    B --> D[Review Service]
+    B --> E[Storage Service]
+    C --> F[Noir Protocol]
+    D --> G[Smart Contracts]
+    E --> H[IPFS Storage]
+```
+
+### System Components
+
+1. **Frontend Layer**
+   - Next.js application
+   - React components
+   - Tailwind CSS styling
+   - Web3 integration
+
+2. **Backend Services**
+   - Authentication service
+   - Review management
+   - File storage
+   - Smart contract integration
+
+3. **Blockchain Layer**
+   - Noir protocol integration
+   - Smart contracts
+   - IPFS storage
+   - Zero-knowledge proofs
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js (v18 or later)
 - npm or yarn
+- MetaMask wallet
+- Git
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/yourusername/anonymousscience.git
    cd anonymousscience
    ```
 
-2. Install dependencies:
+2. **Install Dependencies**
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. Create a `.env.local` file in the root directory and add your environment variables:
-   ```
+3. **Environment Setup**
+   Create a `.env.local` file:
+   ```env
    NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID=your_project_id
+   NEXT_PUBLIC_INFURA_ID=your_infura_id
+   NEXT_PUBLIC_ALCHEMY_ID=your_alchemy_id
    ```
 
-4. Start the development server:
+4. **Start Development Server**
    ```bash
    npm run dev
+   # or
+   yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. **Access the Application**
+   Open [http://localhost:3000](http://localhost:3000)
 
-## Project Structure
+## 📚 Documentation
+
+### API Reference
+
+```typescript
+interface PaperSubmission {
+  title: string;
+  abstract: string;
+  keywords: string[];
+  file: File;
+  authorId: string;
+}
+
+interface Review {
+  paperId: string;
+  reviewerId: string;
+  score: number;
+  comments: string;
+  timestamp: number;
+}
+```
+
+### Smart Contracts
+
+```solidity
+contract PaperReview {
+    struct Paper {
+        string ipfsHash;
+        address author;
+        uint256 timestamp;
+        bool isAnonymized;
+    }
+    
+    function submitPaper(string memory _ipfsHash) public {
+        // Implementation
+    }
+}
+```
+
+## 🔧 Development
+
+### Project Structure
 
 ```
 src/
-  ├── app/              # Next.js app router pages
-  ├── components/       # React components
-  │   ├── layout/      # Layout components
-  │   ├── ui/          # UI components
-  │   ├── auth/        # Authentication components
-  │   ├── paper/       # Paper-related components
-  │   └── review/      # Review-related components
-  ├── hooks/           # Custom React hooks
-  ├── lib/             # Utility functions
-  ├── styles/          # Global styles
-  ├── types/           # TypeScript type definitions
-  └── utils/           # Helper functions
+├── app/                    # Next.js app router
+├── components/            # React components
+│   ├── layout/           # Layout components
+│   ├── ui/              # UI components
+│   ├── auth/            # Auth components
+│   ├── paper/           # Paper components
+│   └── review/          # Review components
+├── contracts/           # Smart contracts
+├── hooks/              # Custom hooks
+├── lib/               # Utility functions
+├── styles/           # Global styles
+├── types/           # TypeScript types
+└── utils/          # Helper functions
 ```
 
-## Development Roadmap
+### Development Workflow
 
-### Week 1: Foundation & Core Components
-- Set up development environment
-- Implement basic UI components
-- Create authentication flow
-- Set up Noir integration
+1. **Setup Development Environment**
+   ```bash
+   # Install dependencies
+   npm install
 
-### Week 2: Core Features Implementation
-- Implement paper submission system
-- Create review interface
-- Develop expertise verification
-- Add anonymous communication features
+   # Start development server
+   npm run dev
 
-### Week 3: Advanced Features & Integration
-- Implement collaborative review features
-- Add review quality metrics
-- Develop journal editor dashboard
-- Optimize performance
+   # Run tests
+   npm test
+   ```
 
-### Week 4: Refinement & Presentation
-- Polish UI/UX
-- Conduct testing
-- Prepare documentation
-- Create demo materials
+2. **Code Quality Tools**
+   ```bash
+   # Lint code
+   npm run lint
 
-## Contributing
+   # Format code
+   npm run format
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+   # Type check
+   npm run type-check
+   ```
 
-## License
+## 🧪 Testing
+
+### Test Categories
+
+1. **Unit Tests**
+   - Component testing
+   - Hook testing
+   - Utility function testing
+
+2. **Integration Tests**
+   - API integration
+   - Smart contract interaction
+   - Authentication flow
+
+3. **End-to-End Tests**
+   - User flows
+   - Critical paths
+   - Edge cases
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run specific test suite
+npm test -- --testPathPattern=components
+
+# Run with coverage
+npm test -- --coverage
+```
+
+## 🔐 Security
+
+### Security Measures
+
+1. **Authentication**
+   - JWT tokens
+   - Zero-knowledge proofs
+   - Multi-factor authentication
+
+2. **Data Protection**
+   - End-to-end encryption
+   - Secure storage
+   - Regular audits
+
+3. **Smart Contract Security**
+   - Formal verification
+   - Audit reports
+   - Bug bounties
+
+## 📈 Performance
+
+### Optimization Techniques
+
+1. **Frontend**
+   - Code splitting
+   - Lazy loading
+   - Image optimization
+
+2. **Backend**
+   - Caching
+   - Load balancing
+   - Database optimization
+
+3. **Blockchain**
+   - Gas optimization
+   - Batch processing
+   - Layer 2 solutions
+
+## 🤝 Contributing
+
+### Contribution Guidelines
+
+1. **Fork the Repository**
+   ```bash
+   git fork https://github.com/yourusername/anonymousscience.git
+   ```
+
+2. **Create Feature Branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Commit Changes**
+   ```bash
+   git commit -m 'Add amazing feature'
+   ```
+
+4. **Push to Branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+5. **Open Pull Request**
+
+### Code of Conduct
+
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🌐 Community
 
-- [Noir](https://noir-lang.org/) for zero-knowledge proof capabilities
-- [RainbowKit](https://www.rainbowkit.com/) for wallet connection
-- [Next.js](https://nextjs.org/) for the React framework
-- [Tailwind CSS](https://tailwindcss.com/) for styling
+### Resources
+
+- [Documentation](https://docs.anonymousscience.com)
+- [Discord Server](https://discord.gg/anonymousscience)
+- [Blog](https://blog.anonymousscience.com)
+- [Twitter](https://twitter.com/anonymousscience)
+
+### Events
+
+- Weekly Development Calls
+- Monthly Community Meetups
+- Quarterly Hackathons
+- Annual Conference
+
+## 🙏 Acknowledgments
+
+- [Noir Protocol](https://noir-lang.org/)
+- [RainbowKit](https://www.rainbowkit.com/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+## 📞 Support
+
+For support, email support@anonymousscience.com or join our [Discord community](https://discord.gg/anonymousscience).

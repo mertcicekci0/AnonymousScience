@@ -1,0 +1,6 @@
+[package]
+name = "mzk"
+type = "bin"
+authors = [""]
+
+[dependencies]
